@@ -47,16 +47,18 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.myPeer = new Peer('', {
       host: '3001-peers-peerjsserver-ke4ctk6fasc.ws-eu110.gitpod.io',
-      port: 3001,
-      path: `/`,
-      // secure: true
+      // port: 3001,
+      // path: `/`,
+      secure: true,
     });
     console.log('peer');
     const { username, room } = Qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
 
-    const socket = io('http://localhost:3000');
+    const socket = io(
+      'https://3000-peers-peerjsserver-ke4ctk6fasc.ws-eu110.gitpod.io'
+    );
 
     socket.on('sameName', () => {
       alert(

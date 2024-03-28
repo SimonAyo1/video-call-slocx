@@ -170,6 +170,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     userId?: string
   ): void {
     video.srcObject = stream;
+    video.muted = true;
     video.addEventListener('loadedmetadata', () => {
       video.play();
     });

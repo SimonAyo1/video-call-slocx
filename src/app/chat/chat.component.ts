@@ -49,7 +49,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       host: '3001-peers-peerjsserver-ke4ctk6fasc.ws-eu110.gitpod.io',
       port: 3001,
       path: `/`,
-      secure: true
+      // secure: true
     });
     console.log('peer');
     const { username, room } = Qs.parse(location.search, {

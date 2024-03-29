@@ -15,13 +15,13 @@ import * as Qs from 'qs';
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  @ViewChild('chatForm') chatForm!: ElementRef;
-  @ViewChild('chatMessages') chatMessages!: ElementRef;
-  @ViewChild('roomName') roomName!: ElementRef;
-  @ViewChild('userList') userList!: ElementRef;
+  // @ViewChild('chatForm') chatForm!: ElementRef;
+  // @ViewChild('chatMessages') chatMessages!: ElementRef;
+  // @ViewChild('roomName') roomName!: ElementRef;
+  // @ViewChild('userList') userList!: ElementRef;
   @ViewChild('videos') videoGrid!: ElementRef;
-  @ViewChild('myVideo') myVideo!: ElementRef;
-  @ViewChild('inputMessage') inputMessage!: ElementRef;
+  // @ViewChild('myVideo') myVideo!: ElementRef;
+  // @ViewChild('inputMessage') inputMessage!: ElementRef;
   localVideoActive: boolean = true;
   inCall: boolean = false;
   // const peer = new Peer("pick-an-id");
@@ -113,9 +113,9 @@ export class ChatComponent implements OnInit, OnDestroy {
       socket.emit('joinRoom', { userPeerId, username, room });
     });
 
-    this.inputMessage?.nativeElement.addEventListener('input', () => {
-      this.updateTyping();
-    });
+    // this.inputMessage?.nativeElement.addEventListener('input', () => {
+    //   this.updateTyping();
+    // });
 
     socket.on('typing', (data) => {
       this.addChatTyping(data);
@@ -130,12 +130,12 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.outputUsers(users);
     });
 
-    socket.on('message', (message) => {
-      console.log(message);
-      this.outputMessage(message);
-      this.chatMessages.nativeElement.scrollTop =
-        this.chatMessages?.nativeElement.scrollHeight;
-    });
+    // socket.on('message', (message) => {
+    //   console.log(message);
+    //   this.outputMessage(message);
+    //   this.chatMessages.nativeElement.scrollTop =
+    //     this.chatMessages?.nativeElement.scrollHeight;
+    // });
   }
 
   ngOnDestroy(): void {

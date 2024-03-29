@@ -64,7 +64,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       alert(
         'You already joined the call, please disconnect before continuing here.'
       );
-      window.history.back();
+      window.history.back();  
     });
 
     socket.on('roomNotValid', () => {
@@ -153,7 +153,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     call.on('close', () => {
       // video.remove()
       console.log('a-a-a-a- colse');
-      // video.parentElement?.remove();
+      video.parentElement?.remove();
     });
 
     this.peers[userId] = call;

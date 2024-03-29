@@ -79,7 +79,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       })
       .then((stream) => {
         const video = document.createElement('video');
-
+        video.muted = true;
         this.addVideoStream(video, stream, this.userPeerId);
         console.log('stream 1');
 
@@ -104,11 +104,10 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
 
     socket.on('user-disconnected', (userId) => {
-      console.log('user-disconnected a', this.userPeerId, userId);
-      document.getElementById(userId)?.parentElement?.remove();
+      // console.log('user-disconnected a', this.userPeerId, userId);
+      // document.getElementById(userId)?.parentElement?.remove();
       if (this.peers[userId]) {
         console.log('user-disconnected b', userId);
-
         this.peers[userId].close();
       }
     });
@@ -158,7 +157,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     call.on('close', () => {
       // video.remove()
       console.log('a-a-a-a- colse');
-      video.parentElement?.remove();
+      // video.parentElement?.remove();
     });
 
     this.peers[userId] = call;
@@ -170,15 +169,14 @@ export class ChatComponent implements OnInit, OnDestroy {
     userId?: string
   ): void {
     video.srcObject = stream;
-    video.muted = true;
     video.addEventListener('loadedmetadata', () => {
       video.play();
     });
     const videocontainer = document.createElement('div');
     videocontainer.classList.add('video-participant');
-    if (userId) {
-      videocontainer.id = userId;
-    }
+    // if (userId) {
+    //   videocontainer.id = userId;
+    // }
     videocontainer.append(video);
     this.videoGrid.nativeElement.append(videocontainer);
   }

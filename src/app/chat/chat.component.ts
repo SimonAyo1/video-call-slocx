@@ -147,7 +147,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     const video = document.createElement('video');
 
     call.on('stream', (userVideoStream) => {
-      console.log('stream 3');
+      console.log('stream 3', userVideoStream);
       this.addVideoStream(video, userVideoStream, userId);
     });
     call.on('close', () => {

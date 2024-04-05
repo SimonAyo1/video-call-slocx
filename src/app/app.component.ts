@@ -19,6 +19,10 @@ export class AppComponent {
     // console.log(isMuted, 'isMuted')
   }
 
+  closeTab(): void {
+    window.self.close();
+  }
+
   createRoom() {
     console.log('createroom');
     // this.router.navigate([`/${uuid()}`]);

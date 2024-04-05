@@ -1,40 +1,21 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav-content>
-    <mat-toolbar style="background-color: #ffc107; position: relative">
+    <mat-toolbar
+      style="
+        background-color: #ffbf0066;
+        position: relative;
+        backdrop-filter: blur(10px);
+        opacity: 10;
+      "
+    >
       <img src="../assets/slocx.png" style="width: 100px" />
       <span class="mt-1">|</span><span class="mt-2">Slocx Classroom</span>
 
-      <button class="mode-switch">
-        <svg
-          class="sun"
-          fill="none"
-          stroke="#fbb046"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          class="feather feather-sun"
-          viewBox="0 0 24 24"
-        >
-          <defs />
-          <circle cx="12" cy="12" r="5" />
-          <path
-            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-          />
-        </svg>
-        <svg
-          class="moon"
-          fill="none"
-          stroke="#ffffff"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          class="feather feather-moon"
-          viewBox="0 0 24 24"
-        >
-          <defs />
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-        </svg>
-      </button>
+      <!-- <button class="mode-switch">
+        <i class="bi bi-brightness-high sun"></i>
+        <i class="bi bi-moon moon"></i>
+       
+      </button> -->
     </mat-toolbar>
     <!-- <app-chat></app-chat> -->
 
@@ -48,17 +29,21 @@
         style="z-index: 10; bottom: 20px; right: 0; left: 0"
       >
         <div class="d-flex flex-row gap-2 actionbt">
-          <button type="button" class="btn btn-primary">
-            <i class="bi bi-camera-video-off" *ngIf="!localVideoActive"></i>
-            <i class="bi bi-camera-video" *ngIf="localVideoActive"></i>
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="toggle-video"
+            style="background-color: #ffc107; border: none"
+          >
+            <i class="bi bi-camera-video" id="video"></i>
           </button>
-          <button type="button" class="btn btn-light " id="toggle-mute">
-            <i class="bi bi-mic-mute"></i>
+          <button type="button" class="btn btn-light" id="toggle-mute">
+            <i class="bi bi-mic" id="mic"></i>
           </button>
 
-          <button type="button" class="btn btn-danger">
-            <i class="bi bi-telephone-x"></i>
-          </button>
+          <!-- <button type="button" class="btn btn-danger">
+            <i class="bi bi-telephone-x" (click)="closeTab()"></i>
+          </button> -->
         </div>
       </div>
     </div>

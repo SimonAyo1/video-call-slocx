@@ -84,6 +84,8 @@
         const peers = {};
         let localStream = null;
         let isMuted = false;
+        let isVideoOff = false;
+        
         const { username, room } = Qs.parse(location.search, {
           ignoreQueryPrefix: true,
         });
@@ -161,23 +163,71 @@
         }
 
         function toggleMute() {
-        localStream.getAudioTracks().forEach((track) => {
-          track.enabled = !track.enabled;
-        });
-        isMuted = !isMuted;
-        console.log("Muted");
-      }
+          localStream.getAudioTracks().forEach((track) => {
+            track.enabled = !track.enabled;
+          });
+          isMuted = !isMuted;
 
-      document
-        .getElementById("toggle-mute")
-        .addEventListener("click", function () {
-          console.log("Muted 1");
+          const el = document.createElement("i");
+          el.id = "mic";
 
-          toggleMute();
-        });
+          let classNames = "bi";
+          classNames += isMuted ? " bi-mic-mute" : " bi-mic";
+          el.className = classNames;
+
+          const toggleMuteContainer = document.getElementById("toggle-mute");
+          if (toggleMuteContainer) {
+            const existingMicIcon = document.getElementById("mic");
+            if (existingMicIcon) {
+              toggleMuteContainer.removeChild(existingMicIcon);
+            }
+            toggleMuteContainer.appendChild(el);
+          }
+
+          console.log(isMuted ? "Audio Muted" : "Audio Unmuted");
+        }
+        function toggleVideo() {
+          localStream.getVideoTracks().forEach((track) => {
+            track.enabled = !track.enabled;
+          });
+          isVideoOff = !isVideoOff;
+
+          const el = document.createElement("i");
+          el.id = "video";
+
+          let classNames = "bi";
+          classNames += isVideoOff
+            ? " bi-camera-video-off"
+            : " bi-camera-video";
+          el.className = classNames;
+
+          // Assuming there's a parent element with ID "toggle-video"
+          const toggleVideoContainer = document.getElementById("toggle-video");
+          if (toggleVideoContainer) {
+            const existingVideoIcon = document.getElementById("video");
+            if (existingVideoIcon) {
+              toggleVideoContainer.removeChild(existingVideoIcon);
+            }
+            toggleVideoContainer.appendChild(el);
+          }
+
+          console.log(isVideoOff ? "Video Off" : "Video On");
+        }
+
+        document
+          .getElementById("toggle-mute")
+          .addEventListener("click", function () {
+            console.log("Muted 1");
+            toggleMute();
+          });
+
+        document
+          .getElementById("toggle-video")
+          .addEventListener("click", function () {
+            console.log("video  off 1");
+            toggleVideo();
+          });
       });
-
-    
     </script>
   </body>
 </html>

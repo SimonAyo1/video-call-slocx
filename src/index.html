@@ -82,7 +82,8 @@
         });
 
         const peers = {};
-
+        let localStream = null;
+        let isMuted = false;
         const { username, room } = Qs.parse(location.search, {
           ignoreQueryPrefix: true,
         });
@@ -109,6 +110,7 @@
             audio: true,
           })
           .then((stream) => {
+            localStream = stream;
             addVideoStream(myVideo, stream);
 
             myPeer.on("call", (call) => {
@@ -157,7 +159,25 @@
           videocontainer.append(video);
           videoGrid.append(videocontainer);
         }
+
+        function toggleMute() {
+        localStream.getAudioTracks().forEach((track) => {
+          track.enabled = !track.enabled;
+        });
+        isMuted = !isMuted;
+        console.log("Muted");
+      }
+
+      document
+        .getElementById("toggle-mute")
+        .addEventListener("click", function () {
+          console.log("Muted 1");
+
+          toggleMute();
+        });
       });
+
+    
     </script>
   </body>
 </html>

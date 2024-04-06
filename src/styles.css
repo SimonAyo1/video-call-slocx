@@ -632,3 +632,7 @@ i {
     height: 33.3%;
   }
 }
+
+.video-participant video {
+  transform: scaleX(-1);
+}

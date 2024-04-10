@@ -154,6 +154,7 @@
           video.srcObject = stream;
           video.setAttribute('playsinline', 'true');
           video.setAttribute('muted', 'true');
+          video.setAttribute('autoplay', 'true');
           video.addEventListener("loadedmetadata", () => {
             video.play();
           });

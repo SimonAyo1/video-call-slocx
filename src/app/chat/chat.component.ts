@@ -208,7 +208,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   outputMessage(message: any): void {
-    // Output message to UI
+    // Output message to UI    
   }
 
   outputRoomName(room: any): void {
@@ -216,11 +216,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   outputUsers(users: any): void {
-    // Output user list to UI
+    // Output user list to UI 
   }
 
   sendMessage(): void {
-    // Send message to server
+    // Send message to server  
   }
 
   onSubmit(): void {

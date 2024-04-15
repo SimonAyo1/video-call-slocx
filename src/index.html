@@ -86,13 +86,11 @@
         let isMuted = false;
         let isVideoOff = false;
 
-        const { username, room } = Qs.parse(location.search, {
+        const { user, room } = Qs.parse(location.search, {
           ignoreQueryPrefix: true,
         });
 
-        const socket = io(
-          "https://slocx-classrooom-api-v1.vercel.app"
-        );
+        const socket = io("https://slocx-classrooom-api-v1.vercel.app");
 
         socket.on("sameName", () => {
           alert(
@@ -138,7 +136,7 @@
         });
 
         myPeer.on("open", (userPeerId) => {
-          socket.emit("joinRoom", { userPeerId, username, room });
+          socket.emit("joinRoom", { userPeerId, username: user, room });
         });
 
         function connectToNewUser(userId, stream) {

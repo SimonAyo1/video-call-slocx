@@ -9,6 +9,11 @@ import Peer, { MediaConnection } from 'peerjs';
 import { io } from 'socket.io-client';
 import * as Qs from 'qs';
 
+
+interface IKoshatishise {
+   
+}
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',

@@ -85,7 +85,7 @@
         let localStream = null;
         let isMuted = false;
         let isVideoOff = false;
-        
+
         const { username, room } = Qs.parse(location.search, {
           ignoreQueryPrefix: true,
         });
@@ -103,6 +103,10 @@
 
         socket.on("roomNotValid", () => {
           alert("Invalid link");
+          window.history.back();
+        });
+        socket.on("doNotBelongToClass", () => {
+          alert("You do not have access to this classroom");
           window.history.back();
         });
 
@@ -152,9 +156,9 @@
 
         function addVideoStream(video, stream) {
           video.srcObject = stream;
-          video.setAttribute('playsinline', 'true');
-          video.setAttribute('muted', 'true');
-          video.setAttribute('autoplay', 'true');
+          video.setAttribute("playsinline", "true");
+          video.setAttribute("muted", "true");
+          video.setAttribute("autoplay", "true");
           video.addEventListener("loadedmetadata", () => {
             video.play();
           });
